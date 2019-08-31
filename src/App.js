@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.css";
+import { Row, Container } from "react-bootstrap";
 
 function App() {
   return (
-    <>
-      <h1>Hello world</h1>
-    </>
+    <Container className="container">
+      <Row className="purchase-card">
+        <h1>Hello React</h1>
+      </Row>
+    </Container>
   );
 }
 
