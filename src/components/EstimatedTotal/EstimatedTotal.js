@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
-export default class SubTotal extends Component {
+export default class EstimatedTotal extends Component {
   render() {
     return (
       <Row className="show-grid">
-        <Col md={6}>Subtotal</Col>
         <Col md={6}>
-          <strong>{`$${this.props.price}`}</strong>
+          <h2>Est. total</h2>
+        </Col>
+        <Col md={6}>
+          <h2>{`$${this.props.price}`}</h2>
         </Col>
       </Row>
     );
