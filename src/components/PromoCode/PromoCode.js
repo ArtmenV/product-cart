@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Button,
   Collapse,
-  Well,
   Form,
   Row,
   Col,
   FormGroup,
-  ControlLabel,
+  FormLabel,
   FormControl
-} from 'react-bootstrap';
+} from "react-bootstrap";
 
-import { connect } from 'react-redux';
-import { handleChange } from '../../actions/promoCodeActions';
+import { connect } from "react-redux";
+import { handleChange } from "../../actions/promoCodeActions";
 
 class PromoCodeDiscount extends Component {
   // we no longer need a constructor as the state will be managed in redux
@@ -44,33 +43,31 @@ class PromoCodeDiscount extends Component {
         </Button>
         <Collapse in={this.state.open}>
           <div>
-            <Well>
-              <Row className="show-grid">
-                <Col md={12}>
-                  <Form>
-                    <FormGroup controlId="formInlineName">
-                      <ControlLabel>Promo Code</ControlLabel>{' '}
-                      <FormControl
-                        type="text"
-                        placeholder="Enter promo code"
-                        value={this.props.promoCode}
-                        onChange={this.handleChange}
-                      />
-                    </FormGroup>{' '}
-                    <Button
-                      block
-                      bsStyle="success"
-                      className="btn-round"
-                      // type="submit"
-                      disabled={this.props.isDisabled}
-                      onClick={this.props.giveDiscount}
-                    >
-                      Apply
-                    </Button>
-                  </Form>
-                </Col>
-              </Row>
-            </Well>
+            <Row className="show-grid">
+              <Col md={12}>
+                <Form>
+                  <FormGroup controlId="formInlineName">
+                    <FormLabel>Promo Code</FormLabel>{" "}
+                    <FormControl
+                      type="text"
+                      placeholder="Enter promo code"
+                      value={this.props.promoCode}
+                      onChange={this.handleChange}
+                    />
+                  </FormGroup>{" "}
+                  <Button
+                    block
+                    bsStyle="success"
+                    className="btn-round"
+                    // type="submit"
+                    disabled={this.props.isDisabled}
+                    onClick={this.props.giveDiscount}
+                  >
+                    Apply
+                  </Button>
+                </Form>
+              </Col>
+            </Row>
           </div>
         </Collapse>
       </div>
@@ -82,4 +79,7 @@ const mapStateToProps = state => ({
   promoCode: state.promoCode.value
 });
 
-export default connect(mapStateToProps, { handleChange })(PromoCodeDiscount);
+export default connect(
+  mapStateToProps,
+  { handleChange }
+)(PromoCodeDiscount);

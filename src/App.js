@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { Grid } from 'react-bootstrap';
-import SubTotal from './components/Subtotal/Subtotal';
-import PickupSavings from './components/PickupSavings/PickupSavings';
-import TaxesFees from './components/TaxesFees/TaxesFees';
-import EstimatedTotal from './components/EstimatedTotal/EstimatedTotal';
-import ItemDetails from './components/ItemDetails/ItemDetails';
-import PromoCodeDiscount from './components/PromoCode/PromoCode';
-import './App.css';
+import React, { Component } from "react";
+import { Container } from "react-bootstrap";
+import SubTotal from "./components/Subtotal/Subtotal";
+import PickupSavings from "./components/PickupSavings/PickupSavings";
+import TaxesFees from "./components/TaxesFees/TaxesFees";
+import EstimatedTotal from "./components/EstimatedTotal/EstimatedTotal";
+import ItemDetails from "./components/ItemDetails/ItemDetails";
+import PromoCodeDiscount from "./components/PromoCode/PromoCode";
+import "./App.css";
 
 // Import redux provider
-import { connect } from 'react-redux';
-import { handleChange } from './actions/promoCodeActions';
+import { connect } from "react-redux";
+import { handleChange } from "./actions/promoCodeActions";
 
 class App extends Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class App extends Component {
   };
 
   giveDiscountHandler = () => {
-    if (this.props.promoCode === 'DISCOUNT') {
+    if (this.props.promoCode === "DISCOUNT") {
       this.setState(
         { estimatedTotal: this.state.estimatedTotal * 0.9 },
         function() {
@@ -53,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Grid className="purchase-card">
+        <Container className="purchase-card">
           <SubTotal price={this.state.total.toFixed(2)} />
           <PickupSavings price={this.state.pickupSavings} />
           <TaxesFees taxes={this.state.taxes.toFixed(2)} />
@@ -65,7 +65,7 @@ class App extends Component {
             giveDiscount={() => this.giveDiscountHandler()}
             isDisabled={this.state.disablePromoButton}
           />
-        </Grid>
+        </Container>
       </div>
     );
   }
@@ -75,6 +75,9 @@ const mapStateToProps = state => ({
   promoCode: state.promoCode.value
 });
 
-export default connect(mapStateToProps, {
-  handleChange
-})(App);
+export default connect(
+  mapStateToProps,
+  {
+    handleChange
+  }
+)(App);
